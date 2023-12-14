@@ -52,7 +52,8 @@ const RequirementThird = () => {
         }
     }, [currentTable, tableData]);
 
-    const getAndSetDataB = useCallback(async () => {
+    const getAndSetDataB = useCallback(async (e) => {
+        e.preventDefault();
         try {
             const data = await fetch(`${URL}/${TABLE_DETAILS['B'].PATH}`, {
                 method: 'POST',

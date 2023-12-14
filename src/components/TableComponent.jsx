@@ -6,12 +6,13 @@ const CustomTable = ({ columnsConfig, tableHeader, styles, data }) => {
   const getKeyValue = (obj, str) => {
     let keys = str.split(".");
     let value = obj;
+    let temp = value;
     keys.forEach(key => {
       value = value[key];
     });
     return value;
   }
-  
+
   return (
     <div>
       <h2>{tableHeader}</h2>

@@ -21,9 +21,29 @@ const RequirementSecond = () => {
         try {
             const data = await fetch(`${URL}/${"scam/save"}`, {
                 method: 'POST',
-                body: {
-                    
-                }
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    record: {
+                        user: {
+                            phoneNumber,
+                            email,
+                            name,
+                            age,
+                        },
+                        scammer: {
+                            phoneNumber: scammerPhoneNumber,
+                            email: scammerEmail,
+                            scamCategory: null, // You may want to update this based on your application logic
+                        },
+                        reported: "User",
+                    },
+                    type: "financial",
+                    content: "This is a sample content",
+                    duration: "2023-01-01T12:34:56",
+                    lostResource: "money",
+                }),
             }).then((res) => {
                 return res.json()
             }).catch((err) => {

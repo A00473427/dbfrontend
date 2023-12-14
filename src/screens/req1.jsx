@@ -23,6 +23,7 @@ const RequirementFirst = () => {
                 ];
             });
             setTableData(data);
+            console.log(data);
         } catch(err){
             console.log(err);
             setTableData([
@@ -66,12 +67,6 @@ const TABLE_DETAILS = {
             { name: 'Record ID', key: 'id.recordId' },
             { name: 'Phone Number', key: 'id.phoneNumber' },
             { name: 'Duration', key: 'duration' },
-            // { name: 'User ID', key: 'record.user.userId' },
-            // { name: 'User Name', key: 'record.user.name' },
-            // { name: 'Scammer ID', key: 'record.scammer.scammerId' },
-            // { name: 'Scammer Phone Number', key: 'record.scammer.phoneNumber' },
-            // { name: 'Scam Category', key: 'record.scammer.scamCategory.type' },
-            // { name: 'Reported', key: 'record.reported' },
         ],
     },
     'email_record': {
@@ -81,25 +76,16 @@ const TABLE_DETAILS = {
             { name: 'Record ID', key: 'id.recordId' },
             { name: 'Email', key: 'id.email' },
             { name: 'Content', key: 'content' },
-            // { name: 'User ID', key: 'record.user.userId' },
-            // { name: 'User Name', key: 'record.user.name' },
-            // { name: 'Scammer ID', key: 'record.scammer.scammerId' },
-            // { name: 'Scammer Phone Number', key: 'record.scammer.phoneNumber' },
-            // { name: 'Scam Category', key: 'record.scammer.scamCategory.type' },
-            // { name: 'Reported', key: 'record.reported' },
         ],
     },
     'record': {
         TABLE_NAME: 'Records',
         PATH: 'record/all',
         COLUMN_CONFIG: [
-            { name: 'Record ID', key: 'recordId' },
-            { name: 'User ID', key: 'user.userId' },
-            // { name: 'User Name', key: 'user.name' },
-            { name: 'Scammer ID', key: 'scammer.scammerId' },
-            // { name: 'Scammer Phone Number', key: 'scammer.phoneNumber' },
-            // { name: 'Scam Category', key: 'scammer.scamCategory.type' },
-            { name: 'Reported', key: 'reported' },
+            { name: 'Record ID', key: 'record.recordId' },
+            { name: 'User ID', key: 'record.user.userId' },
+            { name: 'Scammer ID', key: 'record.scammer.scammerId' },
+            { name: 'Reported', key: 'record.reported' },
         ],
     },
     'scam_category': {
@@ -129,7 +115,7 @@ const TABLE_DETAILS = {
             { name: 'Scammer ID', key: 'scammer.scammerId' },
             { name: 'Scammer Phone Number', key: 'scammer.phoneNumber' },
             { name: 'Scammer Email', key: 'scammer.email' },
-            { name: 'Scam Category', key: 'scammer.scamCategory.type' },
+            { name: 'Scam Category', key: 'scammer.scamCategory.categoryId' },
         ],
     },
     'user': {
