@@ -3,6 +3,15 @@ import React from 'react';
 import { Table } from 'flowbite-react';
 
 const CustomTable = ({ columnsConfig, tableHeader, styles, data }) => {
+  const getKeyValue = (obj, str) => {
+    let keys = str.split(".");
+    let value = obj;
+    keys.forEach(key => {
+      value = value[key];
+    });
+    return value;
+  }
+  
   return (
     <div>
       <h2>{tableHeader}</h2>
@@ -16,7 +25,7 @@ const CustomTable = ({ columnsConfig, tableHeader, styles, data }) => {
           {data.map((row, index) => (
             <Table.Row key={index}>
               {columnsConfig.map((column) => (
-                <Table.Cell key={column.key}>{row[column.key]}</Table.Cell>
+                <Table.Cell key={column.key}>{getKeyValue(row,column.key)}</Table.Cell>
               ))}
             </Table.Row>
           ))}

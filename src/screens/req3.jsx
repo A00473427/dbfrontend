@@ -6,23 +6,23 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 const TABLE_KEYS = ['A', 'B'];
 const TABLE_DETAILS = {
     'A': {
-        TABLE_NAME: 'table_name',
-        PATH: 'apiPath',
+        TABLE_NAME: 'Standard Group',
+        PATH: 'scam/age',
         COLUMN_CONFIG: [
-            { name: 'Name', key: 'name' },
             { name: 'Age', key: 'age' },
+            { name: 'Scam Count', key: 'scamCount' },
         ],
     },
     'B': {
-        TABLE_NAME: 'table_name',
-        PATH: 'apiPath',
+        TABLE_NAME: 'Custom Age Group',
+        PATH: 'scam/scamStats',
         COLUMN_CONFIG: [
-            { name: 'Name', key: 'name' },
-            { name: 'Age', key: 'age' },
+            { name: 'Phone', key: 'phone' },
+            { name: 'Email', key: 'email' },
         ],
     }
 };
-const URL = "";
+const URL = "http://localhost:8081";
 
 const RequirementThird = () => {
 
@@ -56,10 +56,13 @@ const RequirementThird = () => {
         try {
             const data = await fetch(`${URL}/${TABLE_DETAILS['B'].PATH}`, {
                 method: 'POST',
-                body: {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
                     startAge,
                     endAge
-                }
+                }),
             }).then((res) => {
                 return res.json()
             }).catch((err) => {
@@ -92,7 +95,7 @@ const RequirementThird = () => {
                     TABLE_KEYS.map(
                         (key) => (
                             <Dropdown.Item onClick={() => setCurrentTable(key)}>
-                                {TABLE_DETAILS[currentTable].TABLE_NAME}
+                                {TABLE_DETAILS[key].TABLE_NAME}
                             </Dropdown.Item>
                         )
                     )
@@ -123,7 +126,7 @@ const RequirementThird = () => {
                                     id="end"
                                     type="number"
                                     placeholder="enter end age"
-                                    value={startAge}
+                                    value={endAge}
                                     onChange={(e) => setEndAge(e.target.value)}
                                     required 
                                 />

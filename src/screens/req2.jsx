@@ -3,7 +3,7 @@ import CustomTable from '../components/TableComponent';
 import { Dropdown } from 'flowbite-react';
 import { Button, Checkbox, Label, TextInput, Radio } from 'flowbite-react';
 
-const URL = "";
+const URL = "http://localhost:8081";
 
 const RequirementSecond = () => {
 
@@ -19,7 +19,7 @@ const RequirementSecond = () => {
 
     const getAndSetDataB = useCallback(async () => {
         try {
-            const data = await fetch(`${URL}/${""}`, {
+            const data = await fetch(`${URL}/${"scam/save"}`, {
                 method: 'POST',
                 body: {
                     
